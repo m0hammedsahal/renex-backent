@@ -1,0 +1,60 @@
+
+
+{% extends 'base/web-base.html' %}
+{% load static %}
+{% block container %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="category" class="block mb-2 font-medium">Select Category</label>
+    <select id="category" name="category" class="w-full border-gray-300 rounded-md">
+        <option value="">Select a category</option>
+        {% for category in categories %}
+        <option value="{{ category.name|lower }}" {% if selected_category == category.name|lower %}selected{% endif %}>
+            {{ category.name }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <div id="form-container" class="mt-4">
+        {% if form %}
+            {{ form.as_p }}
+        {% endif %}
+    </div>
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+</form>
+
+<script>
+    document.getElementById('category').addEventListener('change', function () {
+        const selectedCategory = this.value;
+
+        // Redirect to fetch the form dynamically based on the selected category
+        if (selectedCategory) {
+            window.location.href = `?category=${selectedCategory}`;
+        }
+    });
+
+
+    
+</script>
+<script>
+    document.getElementById('category').addEventListener('change', function () {
+        const selectedCategory = this.value;
+        const container = document.getElementById('form-container');
+
+        if (selectedCategory) {
+            fetch(`/get_form/?category=${selectedCategory}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.form_html) {
+                        container.innerHTML = data.form_html;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            container.innerHTML = '';
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+
+{% extends 'base/web-base.html' %}
+{% load static %}
+{% block container %}
+{% include 'includes/header.html' %}
+ 
+    
+
+    <section class="wrapper p-4 md:p-8 bg-gray-50">
+        <h3 class="text-2xl md:text-3xl font-bold mt-4 mb-4 text-gray-800">{{ property.title }}</h3>
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Image Carousel Section -->
+            <div class="md:w-3/5">
+                <div class="flex justify-between items-center mb-4 text-gray-600 bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
+                    <div class="flex items-center gap-3">
+                        <!-- Location Icon -->
+                        <img src="{% static 'image/Group (4).png' %}" alt="Location Icon" class="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity duration-200">
+                
+                        <!-- Location Text with Animation -->
+                        <h4 class="text-lg font-semibold text-gray-700 transition-colors duration-200 hover:text-blue-600">{{ property.location }}</h4>
+                    </div>
+                
+                    <!-- Price Text with Color Transition -->
+                    <h3 class="text-xl font-bold text-green-600 transition-transform duration-200 hover:text-green-700 transform hover:scale-105">₹ {{ property.price }}</h3>
+                </div>
+                
+    
+                <!-- Main Image Slider -->
+                <div class="swiper mySwiper2 rounded-lg overflow-hidden h-64 md:h-80 shadow-lg">
+                    <div class="swiper-wrapper">
+                        {% if property.mainphoto %}
+                        <div class="swiper-slide"><img src="{{ property.mainphoto.url }}" alt="Property Image 1" /></div>
+                        {% endif %}
+                        {% if property.photo1 %}
+                        <div class="swiper-slide"><img src="{{ property.photo1.url }}" alt="Property Image 2" /></div>
+                        {% endif %}
+                        {% if property.photo2 %}
+                        <div class="swiper-slide"><img src="{{ property.photo2.url }}" alt="Property Image 3" /></div>
+                        {% endif %}
+                        {% if property.photo3 %}
+                        <div class="swiper-slide"><img src="{{ property.photo3.url }}" alt="Property Image 3" /></div>
+                        {% endif %}
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+    
+                <!-- Thumbnail Slider -->
+                <div thumbsSlider="" class="swiper mySwiper mt-4 h-24 overflow-hidden rounded-lg">
+                    <div class="swiper-wrapper">
+                        {% if property.mainphoto %}
+                        <div class="swiper-slide"><img src="{{ property.mainphoto.url }}" alt="Thumbnail 1" /></div>
+                        {% endif %}
+                        {% if property.photo1 %}
+                        <div class="swiper-slide"><img src="{{ property.photo1.url }}" alt="Thumbnail 2" /></div>
+                        {% endif %}
+                        {% if property.photo2 %}
+                        <div class="swiper-slide"><img src="{{ property.photo2.url }}" alt="Thumbnail 3" /></div>
+                        {% endif %}
+                        {% if property.photo3 %}
+                        <div class="swiper-slide"><img src="{{ property.photo3.url }}" alt="Thumbnail 3" /></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Contact Agent Section -->
+            <div class="shadow-md bg-white rounded-lg p-6 w-full md:w-1/3 hover:shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-105">
+                <div class="text-center">
+                    <!-- Profile Image with Border and Hover Effect -->
+                    <img src="{{ property.listed_by_photo.url }}" alt="Agent" class="mx-auto mb-4 w-20 h-20 rounded-full border-4 border-blue-200 transition-transform duration-300 ease-in-out transform hover:scale-110">
+            
+                    <!-- Agent Name and Role -->
+                    <h3 class="py-2 text-lg font-semibold text-gray-800 fade-in">Micheal James</h3>
+                    <h4 class="text-gray-500 mb-4 fade-in delay-100">{{ property.listed_by }}</h4>
+            
+                    <!-- Button for Viewing Phone Number -->
+                    <a href="{{ property.phone_number }}" class="py-2 px-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-all duration-200 inline-flex items-center gap-2 transform hover:scale-105">
+                        <i class='bx bx-phone'></i> VIEW PHONE
+                    </a>
+            
+                    <!-- Button for Sending Message -->
+                    <a href="https://wa.me/{{ phone_number }}?text={{ message|urlencode }}" class="py-2 px-5 mt-4 border border-blue-600 text-blue-600 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-200 inline-flex items-center gap-2 transform hover:scale-105">
+                        <i class='bx bx-envelope'></i> SEND MESSAGE
+                    </a>
+                </div>
+            </div>
+            
+            <style>
+            /* Keyframes for fade-in animation */
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+                transform: translateY(10px);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+            
+            /* Applying fade-in animation to elements */
+            .fade-in {
+              animation: fadeIn 0.6s ease-in-out both;
+            }
+            
+            .fade-in.delay-100 {
+              animation-delay: 0.1s;
+            }
+            </style>
+            
+        </div>
+    
+        <!-- General Information Section -->
+        <div class="mt-8">
+            <h1 class="text-xl font-semibold mb-4 text-gray-800">General Information</h1>
+            <div class="flex flex-col md:flex-row gap-8 bg-white shadow-md p-4 rounded-lg">
+                <div class="w-full md:w-1/2">
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Advertise No</span><span class="text-red-600 font-semibold">0-1234</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Published Date</span><span>{{ property.created_at }}</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Advertise Status</span><span>Daily Rental</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Housing Shape</span><span>Apartment</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Room + Living Number</span><span>1 + 1</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Gross / Net M²</span><span>50 M² / 110 M²</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Warming Type</span><span>Natural Gas</span></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Pub</span><span>7</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Furnished</span><span>Not</span></li>
+                        <li class="flex justify-between"><span class="font-medium text-gray-500">Front</span><span>Northwest</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Explanation Section -->
+        <div class="shadow-md bg-white w-full mt-8 py-6 px-6 rounded-lg">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Explanation</h2>
+            <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas ac convallis tellus pellentesque non odio consectetur bibendum.</p>
+        </div>
+    
+        <!-- Location Information Section -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-gray-800">Location Information</h2>
+            <div class="shadow-md bg-white mt-4 py-4 px-4 rounded-lg">
+                <img src="{% static 'image/Mapsicle Map.png' %}" alt="Map Location" class="w-full rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Swiper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+    </script>
+
+
+{% endblock %}

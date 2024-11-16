@@ -1,0 +1,314 @@
+
+{% extends 'base/web-base.html' %}
+{% load static %}
+{% block container %}
+{% include 'includes/header.html' %}
+ 
+    
+    
+   <!-- Section 1 -->
+    <section class="wrapper justify-between mt-[5%]">
+      <h5 class="text-center">Three steps. Three minutes</h5>
+      <h1 class="text-center text-[40px] font-bold m-auto">
+        Everything should be this easy.
+      </h1>
+      <div
+        class="grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-3 mt-[30px]"
+      >
+        <div class="text-center">
+          <img src="{% static 'image/messages.png' %}" alt="" class="mx-auto" />
+          <h3 class="font-semibold mt-3 mb-3">Answer questions</h3>
+          <p class=" ">
+            Lorem ipsum dolor sit amet consectetur. Adipiscing imperdiet
+            bibendum in in vestibulum.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <img src="{% static 'image/sms-tracking.png' %}" alt="" class="mx-auto" />
+          <h3 class="font-semibold mt-3 mb-3">Select a quote</h3>
+          <p class=" ">
+            Lorem ipsum dolor sit amet consectetur. Adipiscing imperdiet
+            bibendum in in vestibulum.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <img src="{% static 'image/edit-2.png' %}" alt="" class="mx-auto" />
+          <h3 class="font-semibold mt-3 mb-3">Answer questions</h3>
+          <p class=" ">
+            Lorem ipsum dolor sit amet consectetur. Adipiscing imperdiet
+            bibendum in in vestibulum.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <div class="bg-blue-50 py-8 px-4">
+      <div class="max-w-7xl mx-auto">
+        <!-- Section Title -->
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-semibold text-blue-900">
+            Newly Launched Projects
+          </h2>
+          <p class="text-gray-500">Limited launch offers available</p>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="flex space-x-4 overflow-x-scroll no-scrollbar">
+          {% for property in properties %}
+          <!-- Property Card -->
+          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+            <div class="p-4">
+              <!-- Status and RERA -->
+              <div class="flex justify-between items-center mb-2">
+                {% if property.construction_status == 'ready_to_move' %}
+                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">Ready to Move</span>
+                {% elif property.construction_status == 'new_launch' %}
+                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">New Launch</span>
+                {% else %}
+                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">Under Construction</span>
+                {% endif %}
+
+                <span class="text-xs text-blue-700 font-semibold">RERA</span>
+              </div>
+              <!-- Property Image -->
+              <img
+                src="{{ property.mainphoto.url }}"
+                alt="{{ property.type }}"
+                class="rounded-lg mb-4"
+              />
+              <!-- Property Details -->
+              <h3 class="text-lg font-semibold">{{ property.type }}</h3>
+              <p class="text-gray-600 text-sm">{{ property.location }}</p>
+              <p class="text-lg font-semibold text-blue-900">
+                ₹ {{ property.price|floatformat:2 }}
+              </p>
+              <p class="text-sm text-gray-600">{{ property.bedrooms }} BHK Apartments</p>
+              <p class="text-sm text-green-600 font-semibold">
+                10.9% price increase in last 3 months
+              </p>
+            </div>
+            <!-- Footer with link to detail page -->
+            <div class="p-4 bg-blue-50 flex justify-between items-center">
+              <span class="text-sm text-gray-500">@zero brokerage</span>
+              <a href="{% url 'web:property_detail' id=property.id %}" class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                View Details
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+            <div class="p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span
+                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
+                  >NEW LAUNCH</span
+                >
+                <span class="text-xs text-blue-700 font-semibold">RERA</span>
+              </div>
+              <img
+                src="image/apartment3.jpg' %}"
+                alt="project image"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold">Sun Siri Green Delight</h3>
+              <p class="text-gray-600 text-sm">Kankipadu, Vijayawada</p>
+              <p class="text-lg font-semibold text-blue-900">
+                ₹ 23.38 - 69.16 L
+              </p>
+              <p class="text-sm text-green-600 font-semibold">
+                19.2% price increase in last 3 months
+              </p>
+            </div>
+            <div class="p-4 bg-blue-50 flex justify-between items-center">
+              <span class="text-sm text-gray-500">@zero brokerage</span>
+              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                View Number
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+            <div class="p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span
+                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
+                  >NEW LAUNCH</span
+                >
+                <span class="text-xs text-blue-700 font-semibold">RERA</span>
+              </div>
+              <img
+                src="image/apartment4.jpg' %}"
+                alt="project image"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold">Raamah Ellemen</h3>
+              <p class="text-gray-600 text-sm">Sevasi, Vadodara</p>
+              <p class="text-lg font-semibold text-blue-900">
+                ₹ 1.94 - 4.45 Cr
+              </p>
+              <p class="text-sm text-green-600 font-semibold">
+                25.9% price increase in last 3 months
+              </p>
+            </div>
+            <div class="p-4 bg-blue-50 flex justify-between items-center">
+              <span class="text-sm text-gray-500">@zero brokerage</span>
+              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                View Number
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
+            <div class="p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span
+                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
+                  >NEW LAUNCH</span
+                >
+                <span class="text-xs text-blue-700 font-semibold">RERA</span>
+              </div>
+              <img
+                src="image/apartment5.jpg' %}"
+                alt="project image"
+                class="rounded-lg mb-4"
+              />
+              <h3 class="text-lg font-semibold">Green Hills Residency</h3>
+              <p class="text-gray-600 text-sm">New Alipore, Kolkata</p>
+              <p class="text-lg font-semibold text-blue-900">
+                ₹ 75.00 L - 1.20 Cr
+              </p>
+              <p class="text-sm text-green-600 font-semibold">
+                12.5% price increase in last 3 months
+              </p>
+            </div>
+            <div class="p-4 bg-blue-50 flex justify-between items-center">
+              <span class="text-sm text-gray-500">@zero brokerage</span>
+              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                View Number
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- index.html -->
+
+
+    <section class="wrapper mb-[10%] py-10 px-[5%]">
+      <h1
+        class="text-[16px] sm:text-[20px] md:text-[25px] lg:text-[50px] text-center font-bold mb-[8%] w-[100%] lg:w-[60%] mx-auto"
+      >
+        We are a global, boutique real estate brokerage
+      </h1>
+      <div class="flex flex-col lg:flex-row justify-between items-center">
+        <div class="lg:w-[48%] w-[100%]">
+          <h2
+            class="text-[12px] md:text-[16px] lg:text-[20px] font-semibold mb-[2%]"
+          >
+            SELL OR RENT YOUR PROPERTY
+          </h2>
+          <h2
+            class="text-[12px] md:text-[20px] lg:text-[40px] font-semibold mb-[2%]"
+          >
+            Register to post your <br />
+            property for FREE
+          </h2>
+          <p class="text-[10px] lg:text-[18px] lg:w-[85%] text-gray-500">
+            Post your residential / commercial property
+          </p>
+          <div class="mt-[8%]">
+            <a href="/AddForm">
+              <button
+                type="submit"
+                class="py-[14px] px-[30px] bg-[#1F1F1F] rounded-[40px] text-white mr-[18px]"
+              >
+                Add Your Property Now
+              </button>
+            </a>
+            <ul class="flex mt-[40px] mb-[40px] lg:mb-0">
+              <li class="mr-[10%]">
+                <h3 class="font-black text-[34px]">200+</h3>
+                <h4 class="text-[14px]">Property Listings</h4>
+              </li>
+              <li class="mr-[10%]">
+                <h3 class="font-black text-[34px]">100+</h3>
+                <h4 class="text-[14px]">Monthly Searches</h4>
+              </li>
+              <li class="mr-[10%]">
+                <h3 class="font-black text-[34px]">99+</h3>
+                <h4 class="text-[14px]">
+                  Owners advertise <br />
+                  monthly
+                </h4>
+              </li>
+            </ul>
+          </div>
+          <!-- <div class="w-[50%]">
+            <h1
+              class="bg-[#0078DB] py-[4%] text-[18px] text-center text-white rounded font-bold"
+            >
+              Post your property for FREE
+            </h1>
+          </div> -->
+        </div>
+
+        <!-- Image Section -->
+        <div class="w-[100%] lg:w-[48%]">
+          <!-- <img src="image/Group 20.png' %}" alt="Property Image" class="rounded-lg w-full h-[350px] object-cover my-4"> -->
+          <section
+            class="bg-white rounded-lg shadow-lg p-6 md:p-8 flex items-center space-y-4 md:space-y-0 md:space-x-6 max-w-3xl mx-auto"
+          >
+            <!-- Text and Button Section -->
+            <div class="md:w-2/3 space-y-4">
+              <!-- Heading -->
+              <h2 class="text-[16px] sm:text-2xl font-semibold text-gray-800">
+                Are you a property owner looking to rent/sell?
+              </h2>
+
+              <!-- Feature List -->
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <span class="text-blue-500 text-lg mr-2">✔</span>
+                  <span class="text-gray-600">Zero Brokerage</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-blue-500 text-lg mr-2">✔</span>
+                  <span class="text-gray-600">Genuine, verified leads</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-blue-500 text-lg mr-2">✔</span>
+                  <span class="text-gray-600">On demand assistance</span>
+                </li>
+              </ul>
+
+              <!-- Call-to-Action Button -->
+              <button
+                class="bg-green-500 text-white font-semibold py-2 px-3 md:py-3 md:px-6 rounded-md hover:bg-green-600 transition duration-300 w-[190px] sm:w-[auto]"
+              >
+                Post property for FREE
+              </button>
+            </div>
+
+            <!-- Image Section -->
+            <div class="md:w-1/3 flex justify-center">
+              <!-- Placeholder for image -->
+              <img
+                src="{% static 'image/apartment2.jpg' %}"
+                alt="House Illustration"
+                class="w-[130px] sm:w-[200px] md:w-full max-w-xs rounded-lg"
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    {% include 'includes/footer.html' %}
+
+
+    {% endblock %}

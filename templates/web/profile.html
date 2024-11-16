@@ -1,0 +1,103 @@
+
+{% extends 'base/web-base.html' %}
+{% load static %}
+{% block container %}
+ 
+    
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <button class="text-gray-600 hover:text-blue-500 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <h1 class="text-lg font-semibold text-blue-600">renex</h1>
+    <div></div>
+  </header>
+
+  <!-- Profile Section -->
+  <section class="text-center mt-10 px-4">
+    <div class="flex justify-center">
+      <div class="w-28 h-28 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.28 0 4-1.72 4-4s-1.72-4-4-4-4 1.72-4 4 1.72 4 4 4zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z" />
+        </svg>
+      </div>
+    </div>
+    <h2 class="text-2xl font-bold mt-6 text-blue-700">Hope You Had A Great Day, Ramshad!</h2>
+    <p class="text-gray-600 mt-1">ramshipanichiyil@gmail.com</p>
+    <p class="text-gray-600 mb-4">91-8921021635</p>
+    <a href="#" class="bg-blue-500 text-white py-2 px-6 rounded-full shadow-lg font-medium hover:bg-blue-600 transition">Edit Profile</a>
+  </section>
+
+  <!-- Settings Links -->
+  <section class="mt-10 px-4">
+    <div class="bg-white shadow-md rounded-lg divide-y divide-gray-200 overflow-hidden">
+      <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-100 transition">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5M12 3l7 7-7 7" />
+          </svg>
+          <span class="text-gray-800 font-medium">Communication Settings</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-100 transition">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h2m4 0h-6m4-6h2m-2 12h2m-6-6h2m4 0h-6M9 12h2m-4-6h2m-2 12h2M5 12h2" />
+          </svg>
+          <span class="text-gray-800 font-medium">Share Feedback</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="#" class="flex items-center justify-between p-4 hover:bg-gray-100 transition">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" />
+          </svg>
+          <span class="text-gray-800 font-medium">Logout</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 shadow-md">
+    <div class="flex justify-around text-gray-500">
+      <a href="#" class="flex flex-col items-center text-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" />
+        </svg>
+        <span class="text-xs">Home</span>
+      </a>
+      <a href="#" class="relative flex flex-col items-center hover:text-blue-500 transition">
+        <span class="absolute top-0 right-1 bg-red-500 text-white text-xs px-1 rounded-full">NEW</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m0-8h-3a4 4 0 100 8h3m-7-8a4 4 0 100 8h1" />
+        </svg>
+        <span class="text-xs">Insights</span>
+      </a>
+      <a href="#" class="flex flex-col items-center hover:text-blue-500 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16v-1a4 4 0 018 0v1m-4 4a4 4 0 11-8 0m4-8a4 4 0 108 0 4 4 0 00-8 0z" />
+        </svg>
+        <span class="text-xs">Shortlisted</span>
+      </a>
+      <a href="#" class="flex flex-col items-center hover:text-blue-500 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 8h14" />
+        </svg>
+        <span class="text-xs">My 99acres</span>
+      </a>
+    </div>
+  </nav>
+
+  {% endblock %}
