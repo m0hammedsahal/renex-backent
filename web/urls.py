@@ -15,5 +15,6 @@ urlpatterns = [
     path('mark_active/<int:id>/', views.mark_active, name='mark_active'),
     path('favorat/<int:id>/', views.favorat, name='favorat'),
     path('delete_property/<int:id>/', views.delete_property, name='delete_property'),
-
+    path("login/", views.login, name="login"),
+    path("signup/", views.register, name="signup"),
 ]

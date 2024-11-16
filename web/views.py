@@ -4,8 +4,14 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
+import random
+from customers.models import *
+from django.contrib.auth.models import User 
 
-from django.contrib.auth.models import User
+
+from users.models import *
 
 
 from property.models import *
@@ -219,3 +225,45 @@ def favorat(request, id):
     instance.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+
+        User =authenticate(request, email=email, password=password)
+        if User is not None:
+            auth_login(request,User)
+            return HttpResponseRedirect(reverse('web:index'))
+        else:
+            context = {'error_message': 'Invalid email address'}
+            return render(request, 'web/login.html', context)
+    else:
+        return render(request,'web/login.html')
+
+def register(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        if User.objects.filter(email=email).exists():
+            context = {'error_message': 'Email is already registered'}
+            return render(request, 'web/signup.html', context)
+
+        user = User.objects.create_user(
+            first_name=first_name, 
+            last_name=last_name, 
+            email=email, 
+            password=password,
+            is_customer=True
+        )
+        user.save()
+        customer = Customer.objects.create(
+            user=user
+        )
+        customer.save()
+        return HttpResponseRedirect (reverse('web:login'))
+    else:
+        return render(request,'web/signup.html')
