@@ -64,9 +64,9 @@
         <h2 class="text-lg font-bold mb-4">Menu</h2>
         <nav class="flex flex-col space-y-4">
           <a href="{% url 'web:index' %}" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">Home</a>
-          <a href="/about" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">About</a>
+          <a href="{% url 'web:favourite' %}" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">Favourite</a>
           <a href="{% url 'web:user_properties' %}" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">My Properties</a>
-          <a href="/contact" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">Contact</a>
+          <a href="{% url 'web:contact' %}" class="text-gray-700 hover:bg-gray-200 p-2 rounded-md">Contact</a>
         </nav>
         <button class="mt-4 bg-blue-500 text-white py-2 px-4 rounded border border-gray-400" id="closeModalButton">Close Menu</button>
       </div>

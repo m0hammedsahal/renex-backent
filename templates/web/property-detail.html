@@ -11,6 +11,11 @@
         <div class="flex flex-col md:flex-row gap-8">
             <!-- Image Carousel Section -->
             <div class="md:w-3/5">
+                {% if property.is_favarite %}
+                <a href="{% url 'web:favorat' id=property.id %}"><i class="text-2xl fa-solid fa-heart text-red-500"></i></a>
+                {% else %}
+                <a href="{% url 'web:favorat' id=property.id %}"><i class="text-2xl fa-regular fa-heart"></i></a>
+                {% endif %}
                 <div class="flex justify-between items-center mb-4 text-gray-600 bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
                     <div class="flex items-center gap-3">
                         <!-- Location Icon -->
@@ -71,15 +76,15 @@
                     <img src="{{ property.listed_by_photo.url }}" alt="Agent" class="mx-auto mb-4 w-20 h-20 rounded-full border-4 border-blue-200 transition-transform duration-300 ease-in-out transform hover:scale-110">
             
                     <!-- Agent Name and Role -->
-                    <h3 class="py-2 text-lg font-semibold text-gray-800 fade-in">Micheal James</h3>
-                    <h4 class="text-gray-500 mb-4 fade-in delay-100">{{ property.listed_by }}</h4>
+                    <h3 class="py-2 text-lg font-semibold text-gray-800 fade-in">{{ property.listed_by_name }}</h3>
+                    <h4 class="text-gray-500 mb-2 fade-in delay-100">{{ property.listed_by }}</h4>
+                    <h4 class="text-gray-500 mb-2 fade-in delay-100">{{ property.mobile_number }}</h4>
             
                     <!-- Button for Viewing Phone Number -->
                     <a href="{{ property.phone_number }}" class="py-2 px-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-all duration-200 inline-flex items-center gap-2 transform hover:scale-105">
                         <i class='bx bx-phone'></i> VIEW PHONE
                     </a>
             
-                    <!-- Button for Sending Message -->
                     <a href="https://wa.me/{{ phone_number }}?text={{ message|urlencode }}" class="py-2 px-5 mt-4 border border-blue-600 text-blue-600 rounded-full shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-200 inline-flex items-center gap-2 transform hover:scale-105">
                         <i class='bx bx-envelope'></i> SEND MESSAGE
                     </a>

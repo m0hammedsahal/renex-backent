@@ -56,7 +56,7 @@
         </div>
 
         <!-- Cards Container -->
-        <div class="flex space-x-4 overflow-x-scroll no-scrollbar">
+        <div class="property-container flex space-x-4 overflow-x-scroll no-scrollbar pb-7">
           {% for property in properties %}
           <!-- Property Card -->
           <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
@@ -64,21 +64,22 @@
               <!-- Status and RERA -->
               <div class="flex justify-between items-center mb-2">
                 {% if property.construction_status == 'ready_to_move' %}
-                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">Ready to Move</span>
+                  <span class="bg-green-400 text-green-900 text-xs px-2 py-1 rounded">Ready to Move</span>
                 {% elif property.construction_status == 'new_launch' %}
-                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">New Launch</span>
+                  <span class="bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded">New Launch</span>
                 {% else %}
-                    <span class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded">Under Construction</span>
+                  <span class="bg-orange-400 text-orange-900 text-xs px-2 py-1 rounded">Under Construction</span>
                 {% endif %}
-
                 <span class="text-xs text-blue-700 font-semibold">RERA</span>
               </div>
               <!-- Property Image -->
-              <img
-                src="{{ property.mainphoto.url }}"
-                alt="{{ property.type }}"
-                class="rounded-lg mb-4"
-              />
+              <div class="mb-4">
+                <img
+                  src="{{ property.mainphoto.url }}"
+                  alt="{{ property.type }}"
+                  class="rounded-lg w-64 h-40 object-cover"
+                />
+              </div>
               <!-- Property Details -->
               <h3 class="text-lg font-semibold">{{ property.type }}</h3>
               <p class="text-gray-600 text-sm">{{ property.location }}</p>
@@ -99,102 +100,7 @@
             </div>
           </div>
           {% endfor %}
-
-          <!-- Card 2 -->
-          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
-            <div class="p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span
-                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
-                  >NEW LAUNCH</span
-                >
-                <span class="text-xs text-blue-700 font-semibold">RERA</span>
-              </div>
-              <img
-                src="image/apartment3.jpg' %}"
-                alt="project image"
-                class="rounded-lg mb-4"
-              />
-              <h3 class="text-lg font-semibold">Sun Siri Green Delight</h3>
-              <p class="text-gray-600 text-sm">Kankipadu, Vijayawada</p>
-              <p class="text-lg font-semibold text-blue-900">
-                ₹ 23.38 - 69.16 L
-              </p>
-              <p class="text-sm text-green-600 font-semibold">
-                19.2% price increase in last 3 months
-              </p>
-            </div>
-            <div class="p-4 bg-blue-50 flex justify-between items-center">
-              <span class="text-sm text-gray-500">@zero brokerage</span>
-              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                View Number
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
-            <div class="p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span
-                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
-                  >NEW LAUNCH</span
-                >
-                <span class="text-xs text-blue-700 font-semibold">RERA</span>
-              </div>
-              <img
-                src="image/apartment4.jpg' %}"
-                alt="project image"
-                class="rounded-lg mb-4"
-              />
-              <h3 class="text-lg font-semibold">Raamah Ellemen</h3>
-              <p class="text-gray-600 text-sm">Sevasi, Vadodara</p>
-              <p class="text-lg font-semibold text-blue-900">
-                ₹ 1.94 - 4.45 Cr
-              </p>
-              <p class="text-sm text-green-600 font-semibold">
-                25.9% price increase in last 3 months
-              </p>
-            </div>
-            <div class="p-4 bg-blue-50 flex justify-between items-center">
-              <span class="text-sm text-gray-500">@zero brokerage</span>
-              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                View Number
-              </button>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="bg-white rounded-lg shadow-md w-80 flex-shrink-0">
-            <div class="p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span
-                  class="bg-yellow-400 text-yellow-900 text-xs px-2 py-1 rounded"
-                  >NEW LAUNCH</span
-                >
-                <span class="text-xs text-blue-700 font-semibold">RERA</span>
-              </div>
-              <img
-                src="image/apartment5.jpg' %}"
-                alt="project image"
-                class="rounded-lg mb-4"
-              />
-              <h3 class="text-lg font-semibold">Green Hills Residency</h3>
-              <p class="text-gray-600 text-sm">New Alipore, Kolkata</p>
-              <p class="text-lg font-semibold text-blue-900">
-                ₹ 75.00 L - 1.20 Cr
-              </p>
-              <p class="text-sm text-green-600 font-semibold">
-                12.5% price increase in last 3 months
-              </p>
-            </div>
-            <div class="p-4 bg-blue-50 flex justify-between items-center">
-              <span class="text-sm text-gray-500">@zero brokerage</span>
-              <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                View Number
-              </button>
-            </div>
-          </div>
+          
         </div>
         <!-- index.html -->
 

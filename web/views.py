@@ -58,7 +58,7 @@ def index(request):
     return render(request, 'web/index.html', context)
 
 
-def addForm(request):
+def addform(request):
     categories = Category.objects.all()
     mainplaces = MainPlace.objects.all()
     properties = PropertyListing.objects.all()
@@ -71,27 +71,27 @@ def addForm(request):
         "properties": properties,
     }
 
-    return render(request, 'web/add.html', context=context)
+    return render(request, 'web/addForm.html', context=context)
 
 
 
-def get_form(request):
-    category = request.GET.get('category')
-    form = None
+# def get_form(request):
+#     category = request.GET.get('category')
+#     form = None
 
-    if category == 'apartments':
-        form = ApartmentForm()
-    elif category == 'farm_houses':
-        form = FarmHouseForm()
-    elif category == 'pg':
-        form = PGForm()
-    elif category == 'builder_floors':
-        form = BuilderFloorForm()
+#     if category == 'apartments':
+#         form = ApartmentForm()
+#     elif category == 'farm_houses':
+#         form = FarmHouseForm()
+#     elif category == 'pg':
+#         form = PGForm()
+#     elif category == 'builder_floors':
+#         form = BuilderFloorForm()
 
-    if form:
-        html = render_to_string('partials/form.html', {'form': form})
-        return JsonResponse({'form_html': html})
-    return JsonResponse({'error': 'Invalid category'}, status=400)
+#     if form:
+#         html = render_to_string('partials/form.html', {'form': form})
+#         return JsonResponse({'form_html': html})
+#     return JsonResponse({'error': 'Invalid category'}, status=400)
 
 
 
@@ -99,7 +99,19 @@ def profile(request):
     
     return render(request, 'web/profile.html')
 
+def contact(request):
+    
+    return render(request, 'web/contact.html')
 
+def favourite(request):
+    properties = PropertyListing.objects.filter(is_favarite=True)
+
+
+    context = {
+        "properties": properties,
+    }
+
+    return render(request, 'web/favourite.html', context=context)
 
 def propertydetail(request, id):
     # Get the current property by ID
@@ -151,9 +163,8 @@ def post_property(request):
 
 def user_properties(request):
     if not request.user.is_authenticated:
-        return redirect('login')  
+        return redirect('login')
 
-    # properties = PropertyListing.objects.filter(listed_by_name=request.user.username)
     properties = PropertyListing.objects.all()
 
     context = {
@@ -182,6 +193,18 @@ def delete_property(request, id):
     instance.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+
+def favourite(request):
+    properties = PropertyListing.objects.filter(is_favarite=True)
+
+
+    context = {
+        "properties": properties,
+    }
+
+    return render(request, 'web/favourite.html', context=context)
 
 
 def favorat(request, id):

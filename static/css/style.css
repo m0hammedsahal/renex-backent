@@ -1,0 +1,16 @@
+.property-container::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 2px; /* Set the width of the scrollbar */
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+.property-container::-webkit-scrollbar-thumb {
+    background-color: #5D5D5D; /* Set the color of the thumb */
+    border-radius: 24px;
+}
+
+/* Customize the scrollbar track (the non-draggable part) */
+.property-container::-webkit-scrollbar-track {
+    background-color: #D9D9D9; /* Set the color of the track */
+    border-radius: 24px;
+}
