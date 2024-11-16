@@ -7,7 +7,6 @@ db.sqlite3
 media
 
 settings.py
-migrations
 
 # Backup files # 
 *.bak 
